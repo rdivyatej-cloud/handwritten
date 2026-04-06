@@ -12,7 +12,7 @@ function generateHandwriting() {
 
   const bg = new Image();
   bg.src = "./assets/paper.jpg"; 
-  smudge.src = "./assets/smudge.png"; 
+  
   bg.onload = () => {
     ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
 
