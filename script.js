@@ -11,8 +11,8 @@ function generateHandwriting() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   const bg = new Image();
-  bg.src = "C:\Users\Dell\Desktop\project1\assets\paper.jpg";
-
+  bg.src = "./assets/paper.jpg"; 
+  smudge.src = "./assets/smudge.png"; 
   bg.onload = () => {
     ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
 
@@ -20,6 +20,16 @@ function generateHandwriting() {
     drawText(text, selectedFont);
     addSmudge();
   };
+  bg.onerror = () => {
+  console.log("Image failed, using fallback");
+
+  ctx.fillStyle = "white";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  drawLines();
+  drawText(text, selectedFont);
+  addSmudge();
+};
 }
 
 function drawLines() {
